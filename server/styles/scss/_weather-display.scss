@@ -94,11 +94,13 @@
 
 		&.has-scroll {
 			width: 640px;
-			height: 310px;
+			margin-top: -1px; // Fix gap that appears between header and scroll area
+			height: 311px; // Add a pixel to compensate for the -1px margin
 			overflow: hidden;
 
 			&.no-header {
 				height: 400px;
+				margin-top: 0; // Reset for no-header case since the gap issue is header-related
 			}
 		}
 
