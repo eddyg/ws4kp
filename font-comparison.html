@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Star4000 Font Comparison</title>
+	<style>
+		@font-face {
+			font-family: 'Star4000';
+			src: url('./server/fonts/Star4000.woff') format('woff');
+			font-display: swap;
+		}
+
+		@font-face {
+			font-family: 'Star4000 Small';
+			src: url('./server/fonts/Star4000 Small.woff') format('woff');
+			font-display: swap;
+		}
+
+		@font-face {
+			font-family: 'Star4000 Large';
+			src: url('./server/fonts/Star4000 Large.woff') format('woff');
+			font-display: swap;
+		}
+
+		@font-face {
+			font-family: 'Star4000 Extended';
+			src: url('./server/fonts/Star4000 Extended.woff') format('woff');
+			font-display: swap;
+		}
+
+		@font-face {
+			font-family: 'Star4000 CM';
+			src: url('./server/fonts/Star4000 CM.woff') format('woff'),
+				url('./server/fonts/Star4000 CM.ttf') format('truetype');
+			font-display: swap;
+		}
+
+		@font-face {
+			font-family: 'Star4000 Small CM';
+			src: url('./server/fonts/Star4000 Small CM.woff') format('woff'),
+				url('./server/fonts/Star4000 Small CM.ttf') format('truetype');
+			font-display: swap;
+		}
+
+		@font-face {
+			font-family: 'Star4000 Large CM';
+			src: url('./server/fonts/Star4000 Large CM.woff') format('woff'),
+				url('./server/fonts/Star4000 Large CM.ttf') format('truetype');
+			font-display: swap;
+		}
+
+		@font-face {
+			font-family: 'Star4000 Extended CM';
+			src: url('./server/fonts/Star4000 Extended CM.woff') format('woff'),
+				url('./server/fonts/Star4000 Extended CM.ttf') format('truetype');
+			font-display: swap;
+		}
+
+		body {
+			margin: 0;
+			padding: 20px;
+			background: #222857;
+			color: #fff;
+			font-family: Arial, sans-serif;
+		}
+
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		h1 {
+			text-align: center;
+			color: #0ff;
+			margin-bottom: 10px;
+		}
+
+		.subtitle {
+			text-align: center;
+			color: #ccc;
+			margin-bottom: 30px;
+			font-size: 14px;
+		}
+
+		.comparison-grid {
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 20px;
+			margin-bottom: 30px;
+		}
+
+		.font-section {
+			border: 2px solid #333;
+			padding: 15px;
+			background: #222857;
+		}
+
+		.font-section h3 {
+			margin: 0 0 15px 0;
+			color: #0ff;
+			font-size: 16px;
+			text-align: center;
+		}
+
+		.original {
+			border-color: #ff6666;
+		}
+
+		.original h3 {
+			color: #ff6666;
+		}
+
+		.cm {
+			border-color: #66ff66;
+		}
+
+		.cm h3 {
+			color: #66ff66;
+		}
+
+		/* Common styling for all weather data */
+		.weather-data {
+			font-size: 20px;
+			font-weight: bold;
+			line-height: normal;
+			color: #fff;
+		}
+
+		/* Font family classes */
+		.star4000 {
+			font-family: 'Star4000', monospace;
+		}
+
+		.star4000-small {
+			font-family: 'Star4000 Small', monospace;
+		}
+
+		.star4000-large {
+			font-family: 'Star4000 Large', monospace;
+		}
+
+		.star4000-extended {
+			font-family: 'Star4000 Extended', monospace;
+		}
+
+		.star4000-cm {
+			font-family: 'Star4000 CM', monospace;
+		}
+
+		.star4000-small-cm {
+			font-family: 'Star4000 Small CM', monospace;
+		}
+
+		.star4000-large-cm {
+			font-family: 'Star4000 Large CM', monospace;
+		}
+
+		.star4000-extended-cm {
+			font-family: 'Star4000 Extended CM', monospace;
+		}
+
+		.font-row {
+			margin-bottom: 40px;
+		}
+
+		.font-name {
+			font-size: 18px;
+			color: #fff;
+			margin-bottom: 20px;
+			text-align: center;
+			font-weight: bold;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<h1>Star4000 Font Comparison</h1>
+		<p class="subtitle">Original fonts vs CM (Consistent Metrics) versions - Cross-platform baseline alignment test</p>
+
+		<!-- Star4000 Regular -->
+		<div class="font-row">
+			<div class="font-name">Star4000 Regular</div>
+			<div class="comparison-grid">
+				<div class="font-section original">
+					<h3>Original (Inconsistent Metrics)</h3>
+					<div class="weather-data star4000">
+						Humidity: 69%<br>
+						Dewpoint: 69°<br>
+						Ceiling: 6900ft.<br>
+						Visibility: 10 mi.<br>
+						Pressure: 29.69
+					</div>
+				</div>
+				<div class="font-section cm">
+					<h3>CM Version (Consistent Metrics)</h3>
+					<div class="weather-data star4000-cm">
+						Humidity: 69%<br>
+						Dewpoint: 69°<br>
+						Ceiling: 6900ft.<br>
+						Visibility: 10 mi.<br>
+						Pressure: 29.69
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Star4000 Small -->
+		<div class="font-row">
+			<div class="font-name">Star4000 Small</div>
+			<div class="comparison-grid">
+				<div class="font-section original">
+					<h3>Original (Inconsistent Metrics)</h3>
+					<div class="weather-data star4000-small">
+						Humidity: 69%<br>
+						Dewpoint: 69°<br>
+						Ceiling: 6900ft.<br>
+						Visibility: 10 mi.<br>
+						Pressure: 29.69
+					</div>
+				</div>
+				<div class="font-section cm">
+					<h3>CM Version (Consistent Metrics)</h3>
+					<div class="weather-data star4000-small-cm">
+						Humidity: 69%<br>
+						Dewpoint: 69°<br>
+						Ceiling: 6900ft.<br>
+						Visibility: 10 mi.<br>
+						Pressure: 29.69
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Star4000 Large -->
+		<div class="font-row">
+			<div class="font-name">Star4000 Large</div>
+			<div class="comparison-grid">
+				<div class="font-section original">
+					<h3>Original (Inconsistent Metrics)</h3>
+					<div class="weather-data star4000-large">
+						Humidity: 69%<br>
+						Dewpoint: 69°<br>
+						Ceiling: 6900ft.<br>
+						Visibility: 10 mi.<br>
+						Pressure: 29.69
+					</div>
+				</div>
+				<div class="font-section cm">
+					<h3>CM Version (Consistent Metrics)</h3>
+					<div class="weather-data star4000-large-cm">
+						Humidity: 69%<br>
+						Dewpoint: 69°<br>
+						Ceiling: 6900ft.<br>
+						Visibility: 10 mi.<br>
+						Pressure: 29.69
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Star4000 Extended -->
+		<div class="font-row">
+			<div class="font-name">Star4000 Extended</div>
+			<div class="comparison-grid">
+				<div class="font-section original">
+					<h3>Original (Inconsistent Metrics)</h3>
+					<div class="weather-data star4000-extended">
+						Humidity: 69%<br>
+						Dewpoint: 69°<br>
+						Ceiling: 6900ft.<br>
+						Visibility: 10 mi.<br>
+						Pressure: 29.69
+					</div>
+				</div>
+				<div class="font-section cm">
+					<h3>CM Version (Consistent Metrics)</h3>
+					<div class="weather-data star4000-extended-cm">
+						Humidity: 69%<br>
+						Dewpoint: 69°<br>
+						Ceiling: 6900ft.<br>
+						Visibility: 10 mi.<br>
+						Pressure: 29.69
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div style="margin-top: 40px; padding: 20px; border: 1px solid #666; background: #222;">
+			<p style="margin: 10px 0; color: #ccc; font-size: 14px;">
+				<strong>What to look for:</strong> The CM (Consistent Metrics) versions should have identical baseline
+				positioning across all browsers and operating systems, while the original fonts may show different positioning
+				depending on your platform.
+			</p>
+			<p style="margin: 10px 0; color: #ccc; font-size: 14px;">
+				<strong>Technical details:</strong> The original Star4000 fonts have conflicting font metrics in different
+				tables (HHead, OS/2 Win, OS/2 Typo), causing browsers to position text differently. The CM versions have unified
+				metrics for consistent cross-platform rendering.
+			</p>
+		</div>
+	</div>
+</body>
+
+</html>
