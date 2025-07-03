@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Current Weather Font Test - Star4000 Large</title>
+	<style>
+		@font-face {
+			font-family: 'Star4000 Large';
+			src: url('./server/fonts/Star4000 Large.woff') format('woff');
+			font-display: swap;
+		}
+
+		@font-face {
+			font-family: 'Star4000 Large CM';
+			src: url('./server/fonts/Star4000 Large CM.woff') format('woff');
+			font-display: swap;
+		}
+
+		@font-face {
+			font-family: 'Star4000 Extended';
+			src: url('./server/fonts/Star4000 Extended.woff') format('woff');
+			font-display: swap;
+		}
+
+		@font-face {
+			font-family: 'Star4000 Extended CM';
+			src: url('./server/fonts/Star4000 Extended CM.woff') format('woff');
+			font-display: swap;
+		}
+
+		body {
+			margin: 0;
+			padding: 20px;
+			background: #222857;
+			color: #fff;
+			font-family: Arial, sans-serif;
+		}
+
+		.container {
+			max-width: 1400px;
+			margin: 0 auto;
+		}
+
+		h1 {
+			text-align: center;
+			color: #0ff;
+			margin-bottom: 10px;
+		}
+
+		.subtitle {
+			text-align: center;
+			color: #ccc;
+			margin-bottom: 30px;
+			font-size: 14px;
+		}
+
+		.comparison-container {
+			display: flex;
+			gap: 40px;
+			margin-bottom: 40px;
+			align-items: flex-start;
+		}
+
+		.font-section {
+			flex: 1;
+			border: 2px solid #333;
+			padding: 20px;
+			background: #222857;
+			min-height: 400px;
+		}
+
+		.font-section h3 {
+			margin: 0 0 20px 0;
+			color: #0ff;
+			font-size: 18px;
+			text-align: center;
+		}
+
+		.original {
+			border-color: #ff6666;
+		}
+
+		.original h3 {
+			color: #ff6666;
+		}
+
+		.cm {
+			border-color: #66ff66;
+		}
+
+		.cm h3 {
+			color: #66ff66;
+		}
+
+		/* Replicate the actual current weather layout */
+		.current-weather-layout {
+			position: relative;
+			height: 350px;
+			width: 100%;
+		}
+
+		.col {
+			height: 50px;
+			width: 255px;
+			display: inline-block;
+			margin-top: 10px;
+			padding-top: 10px;
+			position: absolute;
+			text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+		}
+
+		.left {
+			font-family: 'Star4000 Extended';
+			font-size: 24pt;
+		}
+
+		.left.cm-font {
+			font-family: 'Star4000 Extended CM';
+			font-size: 24pt;
+		}
+
+		.right {
+			right: 0px;
+			font-family: "Star4000 Large";
+			font-size: 20px;
+			font-weight: bold;
+			line-height: 24px;
+		}
+
+		.right.cm-font {
+			font-family: "Star4000 Large CM";
+			font-size: 20px;
+			font-weight: bold;
+			line-height: 24px;
+		}
+
+		.center {
+			text-align: center;
+		}
+
+		.temp {
+			font-family: 'Star4000 Large';
+			font-size: 24pt;
+		}
+
+		.temp.cm-font {
+			font-family: 'Star4000 Large CM';
+			font-size: 24pt;
+		}
+
+		.row {
+			margin-bottom: 12px;
+		}
+
+		.label,
+		.value {
+			display: inline-block;
+		}
+
+		.label {
+			margin-left: 20px;
+		}
+
+		.value {
+			float: right;
+			margin-right: 10px;
+		}
+
+		.wind-container {
+			margin-left: 10px;
+			display: flex;
+		}
+
+		.wind-container>div {
+			width: 50%;
+		}
+
+		.wind {
+			text-align: right;
+		}
+
+		.wind-gusts {
+			text-align: right;
+			font-size: 28px;
+		}
+
+		.location {
+			color: #0ff;
+			max-height: 32px;
+			margin-bottom: 10px;
+			padding-top: 4px;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+
+		.icon {
+			margin: 10px 0;
+		}
+
+		.icon img {
+			margin: 0 auto;
+			display: block;
+			width: 64px;
+			height: 64px;
+			background: #444;
+			border-radius: 4px;
+		}
+
+		/* Test scenarios */
+		.test-scenario {
+			margin-bottom: 50px;
+		}
+
+		.scenario-title {
+			font-size: 16px;
+			color: #fff;
+			margin-bottom: 20px;
+			text-align: center;
+			font-weight: bold;
+		}
+
+		/* Baseline alignment test */
+		.baseline-test {
+			background-image: repeating-linear-gradient(to bottom,
+					transparent 0px,
+					transparent 23px,
+					#ff0033 23px,
+					#ff0033 24px);
+			padding: 20px;
+			margin: 20px 0;
+		}
+
+		.baseline-line {
+			font-family: "Star4000 Large";
+			font-size: 20px;
+			font-weight: bold;
+			line-height: 24px;
+			margin: 0;
+		}
+
+		.baseline-line.cm-font {
+			font-family: "Star4000 Large CM";
+		}
+
+		/* Mixed content test */
+		.mixed-test {
+			font-family: "Star4000 Large";
+			font-size: 20px;
+			font-weight: bold;
+			line-height: 24px;
+		}
+
+		.mixed-test.cm-font {
+			font-family: "Star4000 Large CM";
+		}
+
+		.mixed-test .temp-inline {
+			font-family: 'Star4000 Large';
+			font-size: 24pt;
+		}
+
+		.mixed-test.cm-font .temp-inline {
+			font-family: 'Star4000 Large CM';
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<h1>Current Weather Font Test - Star4000 Large Focus</h1>
+		<p class="subtitle">Focused test on Star4000 Large font in Current Conditions layout scenarios</p>
+
+		<!-- Full Current Weather Layout Comparison -->
+		<div class="test-scenario">
+			<div class="scenario-title">Complete Current Weather Layout</div>
+			<div class="comparison-container">
+				<div class="font-section original">
+					<h3>Original Star4000 Large</h3>
+					<div class="current-weather-layout">
+						<div class="col left">
+							<div class="temp center">72°</div>
+							<div class="condition center">Partly Cloudy</div>
+							<div class="icon center"><img
+									src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect width='64' height='64' fill='%23666'/%3E%3Ctext x='32' y='36' text-anchor='middle' fill='white' font-size='12'%3EIcon%3C/text%3E%3C/svg%3E" />
+							</div>
+							<div class="wind-container">
+								<div class="wind-label">Wind:</div>
+								<div class="wind">SW 8</div>
+							</div>
+							<div class="wind-gusts">Gusts 12</div>
+						</div>
+						<div class="col right">
+							<div class="location">ATLANTA, GA</div>
+							<div class="row">
+								<div class="label">Humidity:</div>
+								<div class="humidity value">69%</div>
+							</div>
+							<div class="row">
+								<div class="label">Dewpoint:</div>
+								<div class="dewpoint value">69°</div>
+							</div>
+							<div class="row">
+								<div class="label">Ceiling:</div>
+								<div class="ceiling value">6900ft.</div>
+							</div>
+							<div class="row">
+								<div class="label">Visibility:</div>
+								<div class="visibility value">10 mi.</div>
+							</div>
+							<div class="row">
+								<div class="label">Pressure:</div>
+								<div class="pressure value">29.69</div>
+							</div>
+							<div class="row">
+								<div class="heat-index-label label">Heat Index:</div>
+								<div class="heat-index value">78°</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="font-section cm">
+					<h3>CM Version Star4000 Large</h3>
+					<div class="current-weather-layout">
+						<div class="col left cm-font">
+							<div class="temp center cm-font">72°</div>
+							<div class="condition center">Partly Cloudy</div>
+							<div class="icon center"><img
+									src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect width='64' height='64' fill='%23666'/%3E%3Ctext x='32' y='36' text-anchor='middle' fill='white' font-size='12'%3EIcon%3C/text%3E%3C/svg%3E" />
+							</div>
+							<div class="wind-container">
+								<div class="wind-label">Wind:</div>
+								<div class="wind">SW 8</div>
+							</div>
+							<div class="wind-gusts">Gusts 12</div>
+						</div>
+						<div class="col right cm-font">
+							<div class="location">ATLANTA, GA</div>
+							<div class="row">
+								<div class="label">Humidity:</div>
+								<div class="humidity value">69%</div>
+							</div>
+							<div class="row">
+								<div class="label">Dewpoint:</div>
+								<div class="dewpoint value">69°</div>
+							</div>
+							<div class="row">
+								<div class="label">Ceiling:</div>
+								<div class="ceiling value">6900ft.</div>
+							</div>
+							<div class="row">
+								<div class="label">Visibility:</div>
+								<div class="visibility value">10 mi.</div>
+							</div>
+							<div class="row">
+								<div class="label">Pressure:</div>
+								<div class="pressure value">29.69</div>
+							</div>
+							<div class="row">
+								<div class="heat-index-label label">Heat Index:</div>
+								<div class="heat-index value">78°</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Baseline Alignment Test -->
+		<div class="test-scenario">
+			<div class="scenario-title">Baseline Alignment Test (Red lines show 24px baseline grid)</div>
+			<div class="comparison-container">
+				<div class="font-section original">
+					<h3>Original Star4000 Large</h3>
+					<div class="baseline-test">
+						<p class="baseline-line">Humidity: 69%</p>
+						<p class="baseline-line">Dewpoint: 69°</p>
+						<p class="baseline-line">Ceiling: 6900ft.</p>
+						<p class="baseline-line">Visibility: 10 mi.</p>
+						<p class="baseline-line">Pressure: 29.69</p>
+					</div>
+				</div>
+				<div class="font-section cm">
+					<h3>CM Version Star4000 Large</h3>
+					<div class="baseline-test">
+						<p class="baseline-line cm-font">Humidity: 69%</p>
+						<p class="baseline-line cm-font">Dewpoint: 69°</p>
+						<p class="baseline-line cm-font">Ceiling: 6900ft.</p>
+						<p class="baseline-line cm-font">Visibility: 10 mi.</p>
+						<p class="baseline-line cm-font">Pressure: 29.69</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Label/Value Float Alignment Test -->
+		<div class="test-scenario">
+			<div class="scenario-title">Label/Value Float Alignment Test</div>
+			<div class="comparison-container">
+				<div class="font-section original">
+					<h3>Original Star4000 Large</h3>
+					<div style="width: 300px; border: 1px solid #666; padding: 10px;">
+						<div class="row"
+							style="font-family: 'Star4000 Large'; font-size: 20px; font-weight: bold; line-height: 24px;">
+							<div class="label">Temperature:</div>
+							<div class="value">72°F</div>
+						</div>
+						<div class="row"
+							style="font-family: 'Star4000 Large'; font-size: 20px; font-weight: bold; line-height: 24px;">
+							<div class="label">Humidity:</div>
+							<div class="value">69%</div>
+						</div>
+						<div class="row"
+							style="font-family: 'Star4000 Large'; font-size: 20px; font-weight: bold; line-height: 24px;">
+							<div class="label">Pressure:</div>
+							<div class="value">29.69 in</div>
+						</div>
+					</div>
+				</div>
+				<div class="font-section cm">
+					<h3>CM Version Star4000 Large</h3>
+					<div style="width: 300px; border: 1px solid #666; padding: 10px;">
+						<div class="row"
+							style="font-family: 'Star4000 Large CM'; font-size: 20px; font-weight: bold; line-height: 24px;">
+							<div class="label">Temperature:</div>
+							<div class="value">72°F</div>
+						</div>
+						<div class="row"
+							style="font-family: 'Star4000 Large CM'; font-size: 20px; font-weight: bold; line-height: 24px;">
+							<div class="label">Humidity:</div>
+							<div class="value">69%</div>
+						</div>
+						<div class="row"
+							style="font-family: 'Star4000 Large CM'; font-size: 20px; font-weight: bold; line-height: 24px;">
+							<div class="label">Pressure:</div>
+							<div class="value">29.69 in</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Mixed Font Size Test -->
+		<div class="test-scenario">
+			<div class="scenario-title">Mixed Font Size Test (Temperature with details)</div>
+			<div class="comparison-container">
+				<div class="font-section original">
+					<h3>Original Star4000 Large</h3>
+					<div class="mixed-test">
+						Current: <span class="temp-inline">72°</span><br>
+						High: 78° Low: 65°<br>
+						Feels like: 76°
+					</div>
+				</div>
+				<div class="font-section cm">
+					<h3>CM Version Star4000 Large</h3>
+					<div class="mixed-test cm-font">
+						Current: <span class="temp-inline">72°</span><br>
+						High: 78° Low: 65°<br>
+						Feels like: 76°
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div style="margin-top: 40px; padding: 20px; border: 1px solid #666; background: #222;">
+			<p style="margin: 10px 0; color: #ccc; font-size: 14px;">
+				<strong>What to look for:</strong> Pay special attention to:
+			</p>
+			<ul style="color: #ccc; font-size: 14px; margin: 10px 0;">
+				<li>Alignment of label/value pairs (left vs right positioning)</li>
+				<li>Baseline consistency in the red-line grid test</li>
+				<li>Vertical spacing between rows</li>
+				<li>Mixed font size positioning and baseline alignment</li>
+				<li>Overall layout positioning and text flow</li>
+			</ul>
+			<p style="margin: 10px 0; color: #ccc; font-size: 14px;">
+				<strong>Focus areas:</strong> The Current Conditions layout uses complex CSS with absolute positioning, floats,
+				and mixed font sizes - areas where font metrics differences would be most apparent.
+			</p>
+		</div>
+	</div>
+</body>
+
+</html>
